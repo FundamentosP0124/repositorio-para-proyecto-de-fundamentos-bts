@@ -3,8 +3,8 @@ using namespace std;
 int main()
 {
    char juego_rapido[4][4]={0};
+   char juego_largo[8][8]={0};
    
-       //int valor_de_inicio_matriz = 10;
        int n = 1;
        int fila, columna;
 
@@ -45,7 +45,7 @@ int main()
     cout << "Este es su nuevo mapa (x = barco):" << endl;
     for (int i = 0; i < 4; ++i) {
         for (int j = 0; j < 4; ++j) {
-            cout << juego_rapido[i][j] << " ";
+            cout <<" | " <<juego_rapido[i][j] << " | ";
         }
         cout << endl;
     }
