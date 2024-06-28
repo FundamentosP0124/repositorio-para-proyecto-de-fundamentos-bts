@@ -158,7 +158,7 @@ int main()
         cout << endl;
     }
     
-    //Ingreso de las posiciones del jugador 1
+    //Ingreso de las posiciones del jugador 2
     cout << "Ingrese  las posiciones de sus cuatros barcos: " << endl;
     for (int i = 0; i < 8; ++i) {
         cout << "Posicion del barco " << n2++ << ": " << endl;
@@ -174,8 +174,8 @@ int main()
     }
     }
     
-    //Mapa resultante jugador 1
-    cout << "JUGADOR 1. Este es su nuevo mapa (x = barco):" << endl;
+    //Mapa resultante jugador 2
+    cout << "JUGADOR 2. Este es su nuevo mapa (x = barco):" << endl;
     for (int i = 0; i < 8; ++i) {
         for (int j = 0; j < 8; ++j) {
             cout <<" | " <<juego_largo_J2[i][j] << " | ";
