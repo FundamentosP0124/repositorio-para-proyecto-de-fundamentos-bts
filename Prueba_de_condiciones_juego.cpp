@@ -107,7 +107,7 @@ switch (eleccion_del_usuario_en_el_menu) {
                                     cin >> fila[i];
                                     cout << "Columna: ";
                                     cin >> columna[i];
-                                    if ((fila [i] >= 0) && (fila [i] < 4) && (columna [i] >= 0) && (columna [i]< 4) && (fila [i]!=fila[i-1] || columna [i]!=columna[i-1])) {
+                                    if ((fila [i] >= 0) && (fila [i] < 4) && (columna [i] >= 0) && (columna [i]< 4) && (fila [i]!=fila[i-1] || columna [i]!=columna[i-1])&& (fila [i]!=fila[i-2] || columna [i]!=columna[i-2])&& (fila [i]!=fila[i-3] || columna [i]!=columna[i-3])) {
                                         juego_rapido_J1[fila[i]][columna[i]] = 'x';
                                     } else {
                                         cout << "Posicion invalida. Intente de nuevo la ultima posicion." << endl;
@@ -142,7 +142,7 @@ switch (eleccion_del_usuario_en_el_menu) {
                                     cin >> fila[i];
                                     cout << "Columna: ";
                                     cin >> columna[i];
-                                    if ((fila [i] >= 0) && (fila [i] < 4) && (columna [i] >= 0) && (columna [i]< 4) && (fila [i]!=fila[i-1] || columna [i]!=columna[i-1])) {
+                                    if ((fila [i] >= 0) && (fila [i] < 4) && (columna [i] >= 0) && (columna [i]< 4) && (fila [i]!=fila[i-1] || columna [i]!=columna[i-1])&& (fila [i]!=fila[i-2] || columna [i]!=columna[i-2])&& (fila [i]!=fila[i-3] || columna [i]!=columna[i-3])) {
                                         juego_rapido_J2[fila[i]][columna[i]] = 'x';
                                     } else {
                                         cout << "Posicion invalida. Intente de nuevo la ultima posicion." << endl;
@@ -201,7 +201,7 @@ switch (eleccion_del_usuario_en_el_menu) {
                                 cin >> fila[i];
                                 cout << "Columna: ";
                                 cin >> columna[i];
-                                if ((fila [i] >= 0) && (fila [i] < 8) && (columna [i] >= 0) && (columna [i]< 8) && (fila [i]!=fila[i-1] || columna [i]!=columna[i-1])) {
+                                if ((fila [i] >= 0) && (fila [i] < 8) && (columna [i] >= 0) && (columna [i]< 8) && (fila [i]!=fila[i-1] || columna [i]!=columna[i-1])&& (fila [i]!=fila[i-2] || columna [i]!=columna[i-2])&& (fila [i]!=fila[i-3] || columna [i]!=columna[i-3])&& (fila [i]!=fila[i-4] || columna [i]!=columna[i-4])&& (fila [i]!=fila[i-5] || columna [i]!=columna[i-5])&& (fila [i]!=fila[i-6] || columna [i]!=columna[i-6])&& (fila [i]!=fila[i-7] || columna [i]!=columna[i-7])) {
                                     juego_largo_J1[fila[i]][columna[i]] = 'x';
                                 } else {
                                     cout << "Posicion invalida. Intente de nuevo la ultima posicion." << endl;
@@ -236,7 +236,7 @@ switch (eleccion_del_usuario_en_el_menu) {
                                 cin >> fila[i];
                                 cout << "Columna: ";
                                 cin >> columna[i];
-                                if ((fila [i] >= 0) && (fila [i] < 8) && (columna [i] >= 0) && (columna [i]< 8) && (fila [i]!=fila[i-1] || columna [i]!=columna[i-1])) {
+                                if ((fila [i] >= 0) && (fila [i] < 8) && (columna [i] >= 0) && (columna [i]< 8) && (fila [i]!=fila[i-1] || columna [i]!=columna[i-1])&& (fila [i]!=fila[i-2] || columna [i]!=columna[i-2])&& (fila [i]!=fila[i-3] || columna [i]!=columna[i-3])&& (fila [i]!=fila[i-4] || columna [i]!=columna[i-4])&& (fila [i]!=fila[i-5] || columna [i]!=columna[i-5])&& (fila [i]!=fila[i-6] || columna [i]!=columna[i-6])&& (fila [i]!=fila[i-7] || columna [i]!=columna[i-7])) {
                                     juego_largo_J2[fila[i]][columna[i]] = 'x';
                                 } else {
                                     cout << "Posicion invalida. Intente de nuevo la ultima posicion." << endl;
