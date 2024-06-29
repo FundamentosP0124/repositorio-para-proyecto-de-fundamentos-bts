@@ -216,9 +216,11 @@ switch (eleccion_del_usuario_en_el_menu) {
                                 for (int j = 0; j < 8; ++j) {
                                     cout <<" | " <<juego_largo_J1[i][j] << " | ";
                                 }
+                                cout<<endl;
                             }
 
                              //Mapa original jugador 2
+                             cout<<"\n\n";
                             cout << "JUGADOR 2, " << usuario2.nombre << ". El mapa original es:" << endl;
                             for (int i = 0; i < 8; i++) {
                                 for (int j = 0; j < 8; j++) {
@@ -229,6 +231,7 @@ switch (eleccion_del_usuario_en_el_menu) {
                             }
                             
                             //Ingreso de las posiciones del jugador 2
+                            cout<<endl;
                             cout << "JUGADOR 2, " << usuario2.nombre << ". Ingrese  las posiciones de sus cuatro barcos: " << endl;
                             for (int i = 0; i < 8; ++i) {
                                 cout << "Posicion del barco " << n2++ << ": " << endl;
