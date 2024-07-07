@@ -213,6 +213,7 @@ switch (eleccion_del_usuario_en_el_menu) {
                                 for (int j = 0; j < 8; ++j) {
                                     cout <<" | " <<juego_largo_J1[i][j] << " | ";
                                 }
+                                cout << endl;
                             }
 
                              //Mapa original jugador 2
