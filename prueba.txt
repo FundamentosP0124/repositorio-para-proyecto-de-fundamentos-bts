@@ -1,0 +1,8 @@
+
+Partida 1
+Jugador 1 - Andrea con puntaje: 0
+Jugador 2 - Pamela con puntaje: 0
+
+Partida 1
+Jugador 1 - Alvarez con puntaje: 0
+Jugador 2 - Lopez con puntaje: 0

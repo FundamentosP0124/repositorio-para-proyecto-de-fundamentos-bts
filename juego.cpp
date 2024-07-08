@@ -292,7 +292,7 @@ int main()
 
                             if (fila_ataque >= 0 && fila_ataque < 4 && columna_ataque >= 0 && columna_ataque < 4) {
                                 if ((juego_rapido_COM[fila_ataque][columna_ataque] == 'x')&&(juego_rapido_COM[fila_ataque][columna_ataque]!='0')) {
-                                    cout << "¡Felicidades, hundiste el barco de " << usuario2. nombre << "!"<< endl; //nombre de jugador contrario
+                                    cout << "¡Felicidades, hundiste el barco de " << usuario2.nombre << "!"<< endl; //nombre de jugador contrario
                                     usuario1.puntaje++;
                                     cout << "Tienes " << usuario1.puntaje<< " puntos." << endl; //Agregar funcion 
                                     juego_rapido_COM[fila_ataque][columna_ataque] = '0';
