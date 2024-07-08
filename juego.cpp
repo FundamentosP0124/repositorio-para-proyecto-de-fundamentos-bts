@@ -13,10 +13,14 @@ struct Usuario
 int main()
 {
 
-    int eleccion_del_usuario_en_el_menu = 0, eleccion_del_modo_de_juego = 0, eleccion_del_tamanio_de_cuadricula = 0, fila[8] = {}, columna[8] = {}, opcion;
+    int eleccion_del_usuario_en_el_menu = 0, eleccion_del_modo_de_juego = 0, eleccion_del_tamanio_de_cuadricula = 0, fila[8] = {}, columna[8] = {}, fila_inicial [8]={}, columna_inicial[8]={}, opcion_continuar = 0;
+    bool continuar = true;
 
     char juego_rapido_COM[4][4] = {0};
     char juego_largo_COM[8][8] = {0};
+    
+    char juego_rapido_COM_sin_barcos[4][4] = {0};
+    char juego_largo_COM_sin_barcos[8][8] = {0};
 
     char juego_rapido_J1[4][4] = {0};
     char juego_rapido_J2[4][4] = {0};
@@ -24,7 +28,88 @@ int main()
     char juego_largo_J1[8][8] = {0};
     char juego_largo_J2[8][8] = {0};
 
-    int n1 = 1, n2 = 1, rondas = 1, fila_inicial, columna_inicial, fila_ataque, columna_ataque;
+    char juego_rapido_J1_sin_barcos[4][4] = {0};
+    char juego_rapido_J2_sin_barcos[4][4] = {0};
+
+    char juego_largo_J1_sin_barcos[8][8] = {0};
+    char juego_largo_J2_sin_barcos[8][8] = {0};
+
+    int n1 = 1, n2 = 1, rondas = 1,  fila_ataque=0, columna_ataque=0;
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            juego_rapido_J1_sin_barcos[i][j] = '.';
+        }
+    }
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            juego_rapido_J2_sin_barcos[i][j] = '.';
+        }
+    }
+
+    for (int i = 0; i < 8; i++)
+    {
+        for (int j = 0; j < 8; j++)
+        {
+            juego_largo_J1_sin_barcos[i][j] = '.';
+        }
+    }
+    for (int i = 0; i < 8; i++)
+    {
+        for (int j = 0; j < 8; j++)
+        {
+            juego_largo_J2_sin_barcos[i][j] = '.';
+        }
+    }
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            juego_rapido_COM_sin_barcos[i][j] = '.';
+        }
+    }
+    for (int i = 0; i < 8; i++)
+    {
+        for (int j = 0; j < 8; j++)
+        {
+            juego_largo_COM_sin_barcos[i][j] = '.';
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     for (int i = 0; i < 4; i++)
@@ -46,28 +131,28 @@ int main()
     {
         for (int j = 0; j < 8; j++)
         {
-            juego_largo_J1[i][j] = '0';
+            juego_largo_J1[i][j] = '.';
         }
     }
     for (int i = 0; i < 8; i++)
     {
         for (int j = 0; j < 8; j++)
         {
-            juego_largo_J2[i][j] = '0';
+            juego_largo_J2[i][j] = '.';
         }
     }
     for (int i = 0; i < 4; i++)
     {
         for (int j = 0; j < 4; j++)
         {
-            juego_rapido_COM[i][j] = '0';
+            juego_rapido_COM[i][j] = '.';
         }
     }
     for (int i = 0; i < 8; i++)
     {
         for (int j = 0; j < 8; j++)
         {
-            juego_largo_COM[i][j] = '0';
+            juego_largo_COM[i][j] = '.';
         }
     }
     do
@@ -111,29 +196,28 @@ int main()
                             Usuario usuario1;
                             cin >> usuario1.nombre;
                             cout << endl;
-                            cout << "JUGADOR 1, " << usuario1.nombre << ". El mapa original es:" << endl;
-                            for (int i = 0; i < 4; i++)
-                            {
-                                for (int j = 0; j < 4; j++)
-                                {
-
+                            cout << "JUGADOR 1 - " << usuario1.nombre << ". El mapa original es:" << endl;
+                            cout << "      0      1      2      3 " << endl;    
+                            for (int i = 0; i < 4; i++){
+                                cout << i << "  ";
+                                for (int j = 0; j < 4; j++){
                                     cout << " | " << juego_rapido_J1[i][j] << " | ";
                                 }
                                 cout << endl;
                             }
 
-                            cout << "JUGADOR 1, " << usuario1.nombre << ". Ingrese  las posiciones de sus cuatro barcos: " << endl;
-                            for (int i = 0; i < 4; ++i)
+                           cout << "JUGADOR 1 - " << usuario1.nombre << ". Ingrese  las posiciones de sus cuatro barcos: " << endl;
+                           for (int i = 0; i < 4; ++i)
                             {
                                 cout << "Posicion del barco " << n1++ << ": " << endl;
                                 cout << "Fila: ";
-                                cin >> fila[i];
+                                cin >> fila_inicial[i];
                                 cout << "Columna: ";
-                                cin >> columna[i];
-                                if ((fila[i] >= 0) && (fila[i] < 4) && (columna[i] >= 0) && (columna[i] < 4) && (fila[i] != fila[i - 1] || columna[i] != columna[i - 1]) && (fila[i] != fila[i - 2] || columna[i] != columna[i - 2]) && (fila[i] != fila[i - 3] || columna[i] != columna[i - 3]))
+                                cin >> columna_inicial[i];
 
+                                if ((fila_inicial[i] >= 0) && (fila_inicial[i] < 4) && (columna_inicial[i] >= 0) && (columna_inicial[i] < 4) && (fila_inicial[i] != fila_inicial[i - 1] || columna_inicial[i] != columna_inicial[i - 1]) && (fila_inicial[i] != fila_inicial[i - 2] || columna_inicial[i] != columna_inicial[i - 2]) && (fila_inicial[i] != fila_inicial[i - 3] || columna_inicial[i] != columna_inicial[i - 3]))
                                 {
-                                    juego_rapido_J1[fila[i]][columna[i]] = 'x';
+                                    juego_rapido_J1[fila_inicial[i]][columna_inicial[i]] = 'x';
                                 }
                                 else
                                 {
@@ -144,12 +228,12 @@ int main()
                             }
 
                             // Mapa resultante jugador 1
-                            cout << usuario1.nombre << ", este es su nuevo mapa (x = barco):" << endl;
-                            for (int i = 0; i < 4; ++i)
-                            {
-                                for (int j = 0; j < 4; ++j)
-                                {
-                                    cout << " | " << juego_rapido_J1[i][j] << " | ";
+                           cout << "JUGADOR 1 - " << usuario1.nombre << ". este es su nuevo mapa (x = barco):" << endl;
+                           cout << "      0      1      2      3 " << endl;
+                           for (int i = 0; i < 4; ++i){
+                           cout << i << "  ";
+                               for (int j = 0; j < 4; ++j){
+                                  cout << " | " << juego_rapido_J1[i][j] << " | ";
                                 }
                                 cout << endl;
                             }
@@ -173,7 +257,7 @@ int main()
                                 }
                             }
 
-                            cout << "Mapa de la COM (x = barco):" << endl;
+                            /*cout << "Mapa de la COM (x = barco):" << endl;
                             for (int i = 0; i < 4; ++i)
                             {
                                 for (int j = 0; j < 4; ++j)
@@ -181,6 +265,70 @@ int main()
                                     cout << " | " << juego_rapido_COM[i][j] << " | ";
                                 }
                                 cout << endl;
+                            }*/
+
+
+                           do{
+                            cout<<endl;
+
+                            cout << "------RONDA " << rondas++ << "-----" << endl; //Como le vamos a llamar a esta parte?
+                            cout<<"Mapa del enemigo: \n\n";
+                           
+                           
+                            cout << "      0      1      2      3 " << endl;    
+                            for (int i = 0; i < 4; i++){
+                                cout << i << "  ";
+                                for (int j = 0; j < 4; j++){
+                                    cout << " | " << juego_rapido_COM_sin_barcos[i][j] << " | ";
+                                }
+                                cout << endl;
+                            }
+
+                            cout << "JUGADOR 1 - " << usuario1.nombre << ". Ingrese las coordenadas que quiere atacar: " << endl;
+                            cout << "Fila: ";
+                            cin >> fila_ataque;
+                            cout << "Columna: ";
+                            cin >> columna_ataque;
+
+                            if (fila_ataque >= 0 && fila_ataque < 4 && columna_ataque >= 0 && columna_ataque < 4) {
+                                if ((juego_rapido_COM[fila_ataque][columna_ataque] == 'x')&&(juego_rapido_COM[fila_ataque][columna_ataque]!='0')) {
+                                    cout << "¡Felicidades, hundiste el barco de " << usuario2. nombre << "!"<< endl; //nombre de jugador contrario
+                                    usuario1.puntaje++;
+                                    cout << "Tienes " << usuario1.puntaje<< " puntos." << endl; //Agregar funcion 
+                                    juego_rapido_COM[fila_ataque][columna_ataque] = '0';
+                                    juego_rapido_COM_sin_barcos[fila_ataque][columna_ataque] = '0'; 
+                                    cout << endl;
+
+                                    cout<<"Este es el mapa del enemigo despues de su ataque: "<<endl;
+                                    cout << "      0      1      2      3 " << endl;    
+                                    for (int i = 0; i < 4; i++){
+                                        cout << i << "  ";
+                                        for (int j = 0; j < 4; j++){
+                                            cout << " | " << juego_rapido_J2_sin_barcos[i][j] << " | ";
+                                        }
+                                        cout << endl;
+                                    }
+                                    cout << endl;
+                                    cout << "            OBJETOS CANJEABLES"<< endl;
+                                    cout << "-----------------------------------------" << endl;
+                                    cout << "CANT. PUNTOS     2      1      2      3 " << endl;
+                                    cout << "OBJETOS          B      1      2      3 " << endl;   
+                                    cout << "-----------------------------------------" << endl;
+                                    //Bombardero = B 
+
+
+
+
+
+
+
+
+                            cout << "¿Desea regresar al menu principal o salir del juego?" << endl;
+                            cout << "1 - Menu principal" << endl; cout << "2 - Salir del juego" << endl; cout << "Ingrese el numero de la opcion elegida = "; cin >> opcion_continuar;
+                            if (opcion_continuar == 1){
+                                continuar = false;
+                            } else {
+                                cout << "Ha salido del juego";
                             }
                         }
 
@@ -258,7 +406,17 @@ int main()
                                 }
                                 cout << endl;
                             }
+
+                            cout << "¿Desea regresar al menu principal o salir del juego?" << endl;
+                            cout << "1 - Menu principal" << endl; cout << "2 - Salir del juego" << endl; cout << "Ingrese el numero de la opcion elegida = "; cin >> opcion_continuar;
+                            if (opcion_continuar == 1){
+                                continuar = false;
+                            } else {
+                                cout << "Ha salido del juego";
+                            }
+
                         }
+
                         else if ((eleccion_del_modo_de_juego == 2) && (eleccion_del_tamanio_de_cuadricula == 1))
                         {
                             cout << "Escribe el nombre del equipo del jugador 1: ";
@@ -280,16 +438,17 @@ int main()
                             }
 
                             cout << "JUGADOR 1 - " << usuario1.nombre << ". Ingrese  las posiciones de sus cuatro barcos: " << endl;
-                            for (int i = 0; i < 4; ++i)
+                           for (int i = 0; i < 4; ++i)
                             {
                                 cout << "Posicion del barco " << n1++ << ": " << endl;
                                 cout << "Fila: ";
                                 cin >> fila_inicial[i];
                                 cout << "Columna: ";
                                 cin >> columna_inicial[i];
+
                                 if ((fila_inicial[i] >= 0) && (fila_inicial[i] < 4) && (columna_inicial[i] >= 0) && (columna_inicial[i] < 4) && (fila_inicial[i] != fila_inicial[i - 1] || columna_inicial[i] != columna_inicial[i - 1]) && (fila_inicial[i] != fila_inicial[i - 2] || columna_inicial[i] != columna_inicial[i - 2]) && (fila_inicial[i] != fila_inicial[i - 3] || columna_inicial[i] != columna_inicial[i - 3]))
                                 {
-                                    juego_rapido_J1[fila[i]][columna[i]] = 'x';
+                                    juego_rapido_J1[fila_inicial[i]][columna_inicial[i]] = 'x';
                                 }
                                 else
                                 {
@@ -298,6 +457,7 @@ int main()
                                     --n1;
                                 }
                             }
+                           
 
                             // Mapa resultante jugador 1
                             cout << "JUGADOR 1 - " << usuario1.nombre << ". este es su nuevo mapa (x = barco):" << endl;
@@ -351,8 +511,33 @@ int main()
                                 cout << endl;
                             }
                         //Colocar Funcion logo para empezar a jugar
+
+
+
+
+
+
+
+
+
+
+
+
                             do{
+                            cout<<endl;
+
                             cout << "------RONDA " << rondas++ << "-----" << endl; //Como le vamos a llamar a esta parte?
+                            cout<<"Mapa del enemigo: \n\n";
+                           
+                           
+                            cout << "      0      1      2      3 " << endl;    
+                            for (int i = 0; i < 4; i++){
+                                cout << i << "  ";
+                                for (int j = 0; j < 4; j++){
+                                    cout << " | " << juego_rapido_J2_sin_barcos[i][j] << " | ";
+                                }
+                                cout << endl;
+                            }
                             cout << "JUGADOR 1 - " << usuario1.nombre << ". Ingrese las coordenadas que quiere atacar: " << endl;
                             cout << "Fila: ";
                             cin >> fila_ataque;
@@ -360,19 +545,75 @@ int main()
                             cin >> columna_ataque;
 
                             if (fila_ataque >= 0 && fila_ataque < 4 && columna_ataque >= 0 && columna_ataque < 4) {
-                                if (juego_rapido_J2[fila_ataque][columna_ataque] == 'x') {
+                                if ((juego_rapido_J2[fila_ataque][columna_ataque] == 'x')&&(juego_rapido_J2[fila_ataque][columna_ataque]!='0')) {
                                     cout << "¡Felicidades, hundiste el barco de " << usuario2. nombre << "!"<< endl; //nombre de jugador contrario
                                     usuario1.puntaje++;
                                     cout << "Tienes " << usuario1.puntaje<< " puntos." << endl; //Agregar funcion 
-                                    juego_rapido_J2[fila_ataque][columna_ataque] = '0'; 
+                                    juego_rapido_J2[fila_ataque][columna_ataque] = '0';
+                                    juego_rapido_J2_sin_barcos[fila_ataque][columna_ataque] = '0'; 
                                     cout << endl;
 
+                                    
+
+                                    cout<<"Este es el mapa del enemigo despues de su ataque: "<<endl;
+
+                            cout << "      0      1      2      3 " << endl;    
+                            for (int i = 0; i < 4; i++){
+                                cout << i << "  ";
+                                for (int j = 0; j < 4; j++){
+                                    cout << " | " << juego_rapido_J2_sin_barcos[i][j] << " | ";
+                                }
+                                cout << endl;
+                            }
+                            cout << endl;
+                            cout << "            OBJETOS CANJEABLES"<< endl;
+                            cout << "-----------------------------------------" << endl;
+                            cout << "CANT. PUNTOS     2      1      2      3 " << endl;
+                            cout << "OBJETOS          B      1      2      3 " << endl;   
+                            cout << "-----------------------------------------" << endl;
+                            //Bombardero = B 
+    
+
+
                                 } else {
+                                    if (juego_rapido_J2[fila_ataque][columna_ataque]!='0')
+                                    {
+                                    juego_rapido_J2_sin_barcos[fila_ataque][columna_ataque] = '*';
                                     cout << "Suerte para la proxima, no hundiste ningun barco o ya atacaste esta posicion." << endl;
+                                    cout<<endl;
+                                    }
+                                    
+
+                                    cout << "Suerte para la proxima, no hundiste ningun barco o ya atacaste esta posicion." << endl;
+                                    cout<<"Este es el mapa del enemigo despues de su ataque: "<<endl;
+
+
+
+
+                            cout << "      0      1      2      3 " << endl;    
+                            for (int i = 0; i < 4; i++){
+                                cout << i << "  ";
+                                for (int j = 0; j < 4; j++){
+                                    cout << " | " << juego_rapido_J2_sin_barcos[i][j] << " | ";
+                                }
+                                cout << endl;
+                            }
+
+
+
+
                                 }
                             } else {
                                 cout << "Posición fuera de los límites de la matriz." << endl;
                             }
+
+
+
+
+
+
+
+
                         //Colocar funcion de logo para cambio de ataque de jugador
                             cout << "JUGADOR 2 - " << usuario2.nombre << ". Ingrese las coordenadas que quiere atacar: " << endl;
                             cout << "Fila: ";
@@ -394,25 +635,38 @@ int main()
                                 cout << "Posición fuera de los límites de la matriz." << endl;
                             }
                             
-                            }while(usuario1.puntaje < 4 && usuario2.puntaje < 4 && rondas < 16); 
+                            }while(usuario1.puntaje < 4 && usuario2.puntaje < 4 ); 
                             
                             if (usuario1.puntaje == 4){
-                                cout << "¡Felicidades " << usuario1.nombre <<  ", has ganado!"; //llamar funciones de nombre
+                                cout << "¡Felicidades " << usuario1.nombre <<  ", has ganado!" << endl; //llamar funciones de nombre
                             } else if (usuario2.puntaje == 4) {
-                                cout << "¡Felicidades " << usuario2.nombre <<  ", has ganado!"; //llamar funciones de nombre
-                            } else if (usuario1.puntaje == 4 && usuario2.puntaje == 4) //llamar funciones de nombre
-                            {
-                                cout << "Hay un empate."<< endl; //Como podriamos decirle que para que vuelva a juegar?
-                            } else if (rondas == 16){
-                                cout << "Han llegado al limite de rondas." << endl;
-                                if (usuario1.puntaje>usuario2.puntaje){
-                                cout << "¡Felicidades " << usuario1.nombre <<  ", has ganado!"; //llamar funciones de nombre
-                                } else if (usuario2.puntaje > usuario1.puntaje){
-                                cout << "¡Felicidades " << usuario2.nombre <<  ", has ganado!"; 
-                                }
-                            }
+                                cout << "¡Felicidades " << usuario2.nombre <<  ", has ganado!" << endl; //llamar funciones de nombre
+                            } 
+
                             
-                            cout << "RESULTADOS"<< endl; //Aqui podriamos agregar un documento
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            
+                            cout << "-----RESULTADOS----"<< endl; //Aqui podriamos agregar un documento
     
                             cout << "JUGADOR 1 - " << usuario1.nombre << ". Esta es su flota después del ataque (0 = barco hundido):" << endl;
                             cout << "      0      1      2      3" << endl;
@@ -433,7 +687,14 @@ int main()
                                 }
                                 cout << endl;
                             }
-
+                            
+                            cout << "¿Desea regresar al menu principal o salir del juego?" << endl;
+                            cout << "1 - Menu principal" << endl; cout << "2 - Salir del juego" << endl; cout << "Ingrese el numero de la opcion elegida = "; cin >> opcion_continuar;
+                            if (opcion_continuar == 1){
+                            continuar = false;
+                            } else {
+                            cout << "Ha salido del juego";
+                            }
 
                         }
     //Colocar Funcion logo para empezar a jugar
@@ -588,15 +849,15 @@ int main()
                             } else if (rondas == 16){
                                 cout << "Han llegado al limite de rondas." << endl;
                                 if (usuario1.puntaje>usuario2.puntaje){
-                                cout << "¡Felicidades " << usuario1.nombre <<  ", has ganado!"; //llamar funciones de nombre
+                                cout << "¡Felicidades " << usuario1.nombre <<  ", has ganado!" << endl; //llamar funciones de nombre
                                 } else if (usuario2.puntaje > usuario1.puntaje){
-                                cout << "¡Felicidades " << usuario2.nombre <<  ", has ganado!"; //llamar funciones de nombre
+                                cout << "¡Felicidades " << usuario2.nombre <<  ", has ganado!" << endl; //llamar funciones de nombre
                                 }
                             }
                             
                             cout << "RESULTADOS"<< endl; //Aqui podriamos agregar un documento
-    
-                            cout << "JUGADOR 1 - " << usuario1.nombre << ". Esta es su flota después del ataque (0 = barco hundido):" << endl;
+
+                            cout << "JUGADOR 1 - " << usuario1.nombre << ". Esta es su flota despues del ataque (0 = barco hundido):" << endl;
                             cout << "      0      1      2      3      4      5      6      7" << endl;
                             for (int i = 0; i < 8; i++) {
                             cout << i << "  ";
@@ -606,7 +867,7 @@ int main()
                                 cout << endl;
                             }
 
-                            cout << "JUGADOR 2 - " << usuario2.nombre << ". Esta es su flota después del ataque (0 = barco hundido):" << endl;
+                            cout << "JUGADOR 2 - " << usuario2.nombre << ". Esta es su flota despues del ataque (0 = barco hundido):" << endl;
                             cout << "      0      1      2      3      4      5      6      7" << endl;
                             for (int i = 0; i < 8; i++) {
                             cout << i << "  ";
@@ -615,6 +876,13 @@ int main()
                                 }
                                 cout << endl;
                             }
+                            cout << "¿Desea regresar al menu principal o salir del juego?" << endl;
+                            cout << "1 - Menu principal" << endl; cout << "2 - Salir del juego" << endl; cout << "Ingrese el numero de la opcion elegida = "; cin >> opcion_continuar;
+                            if (opcion_continuar == 1){
+                                continuar = false;
+                            } else {
+                                cout << "Ha salido del juego";
+                                   }
                         }
 
                         if (eleccion_del_tamanio_de_cuadricula != 1 && eleccion_del_tamanio_de_cuadricula != 2)
@@ -633,10 +901,25 @@ int main()
 
         case 2:
             cout << "Aca van las instrucciones del jueguito";
+            cout << "¿Desea regresar al menu principal o salir del juego?" << endl;
+            cout << "1 - Menu principal" << endl; cout << "2 - Salir del juego" << endl; cout << "Ingrese el numero de la opcion elegida = "; cin >> opcion_continuar;
+            if (opcion_continuar == 1){
+                continuar = false;
+            } else {
+                cout << "Ha salido del juego";
+            }            
             break;
 
         case 3:
             cout << "\tFUNDAMENTOS DE PROGRAMACION\n\t\tCICLO 01\n\tCATEDRATICA ING. ELISA ALDANA\n\t\tJUEGO HECHO POR:\n\t\tJULIO FLORES\n\t\tJOHNNY ARTEAGA\n\t\tANDREA ALVAREZ";
+            cout << "¿Desea regresar al menu principal o salir del juego?" << endl;
+            cout << "1 - Menu principal" << endl; cout << "2 - Salir del juego" << endl; cout << "Ingrese el numero de la opcion elegida = "; cin >> opcion_continuar;
+            if (opcion_continuar == 1){
+                continuar = false;
+            } else {
+                cout << "Ha salido del juego";
+            }
+
             break;
 
         case 4:
@@ -648,7 +931,7 @@ int main()
             break;
         }
 
-    } while ((eleccion_del_usuario_en_el_menu > 4) || (eleccion_del_usuario_en_el_menu < 1));
+    } while ((eleccion_del_usuario_en_el_menu > 4) || (eleccion_del_usuario_en_el_menu < 1) || (continuar = true));
 
     return 0;
 }
