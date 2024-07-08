@@ -395,6 +395,44 @@ int main()
                             }
                             
                             }while(usuario1.puntaje < 4 && usuario2.puntaje < 4 && rondas < 16); 
+                            
+                            if (usuario1.puntaje == 4){
+                                cout << "¡Felicidades " << usuario1.nombre <<  ", has ganado!"; //llamar funciones de nombre
+                            } else if (usuario2.puntaje == 4) {
+                                cout << "¡Felicidades " << usuario2.nombre <<  ", has ganado!"; //llamar funciones de nombre
+                            } else if (usuario1.puntaje == 4 && usuario2.puntaje == 4) //llamar funciones de nombre
+                            {
+                                cout << "Hay un empate."<< endl; //Como podriamos decirle que para que vuelva a juegar?
+                            } else if (rondas == 16){
+                                cout << "Han llegado al limite de rondas." << endl;
+                                if (usuario1.puntaje>usuario2.puntaje){
+                                cout << "¡Felicidades " << usuario1.nombre <<  ", has ganado!"; //llamar funciones de nombre
+                                } else if (usuario2.puntaje > usuario1.puntaje){
+                                cout << "¡Felicidades " << usuario2.nombre <<  ", has ganado!"; 
+                                }
+                            }
+                            
+                            cout << "RESULTADOS"<< endl; //Aqui podriamos agregar un documento
+    
+                            cout << "JUGADOR 1 - " << usuario1.nombre << ". Esta es su flota después del ataque (0 = barco hundido):" << endl;
+                            cout << "      0      1      2      3" << endl;
+                            for (int i = 0; i < 4; i++) {
+                            cout << i << "  ";
+                                for (int j = 0; j < 4; j++) {
+                                cout <<" | " <<juego_rapido_J1[i][j] << " | ";
+                                }
+                                cout << endl;
+                            }
+
+                            cout << "JUGADOR 2 - " << usuario2.nombre << ". Esta es su flota después del ataque (0 = barco hundido):" << endl;
+                            cout << "      0      1      2      3" << endl;
+                            for (int i = 0; i < 4; i++) {
+                            cout << i << "  ";
+                                for (int j = 0; j < 4; j++) {
+                                cout <<" | " <<juego_rapido_J2[i][j] << " | ";
+                                }
+                                cout << endl;
+                            }
 
 
                         }
@@ -540,6 +578,43 @@ int main()
                             }
                             
                             }while(usuario1.puntaje < 8 && usuario2.puntaje < 8 && rondas < 16);
+                            if (usuario1.puntaje == 8){
+                                cout << "¡Felicidades " << usuario1.nombre <<  ", has ganado!"; 
+                            } else if (usuario2.puntaje == 8) {
+                                cout << "¡Felicidades " << usuario2.nombre <<  ", has ganado!"; //llamar funciones de nombre
+                            } else if (usuario1.puntaje == 8 && usuario2.puntaje == 8) //llamar funciones de nombre
+                            {
+                                cout << "Hay un empate."<< endl; //Como podriamos decirle que para que vuelva a juegar
+                            } else if (rondas == 16){
+                                cout << "Han llegado al limite de rondas." << endl;
+                                if (usuario1.puntaje>usuario2.puntaje){
+                                cout << "¡Felicidades " << usuario1.nombre <<  ", has ganado!"; //llamar funciones de nombre
+                                } else if (usuario2.puntaje > usuario1.puntaje){
+                                cout << "¡Felicidades " << usuario2.nombre <<  ", has ganado!"; //llamar funciones de nombre
+                                }
+                            }
+                            
+                            cout << "RESULTADOS"<< endl; //Aqui podriamos agregar un documento
+    
+                            cout << "JUGADOR 1 - " << usuario1.nombre << ". Esta es su flota después del ataque (0 = barco hundido):" << endl;
+                            cout << "      0      1      2      3      4      5      6      7" << endl;
+                            for (int i = 0; i < 8; i++) {
+                            cout << i << "  ";
+                                for (int j = 0; j < 8; j++) {
+                                cout <<" | " <<juego_largo_J1[i][j] << " | ";
+                                }
+                                cout << endl;
+                            }
+
+                            cout << "JUGADOR 2 - " << usuario2.nombre << ". Esta es su flota después del ataque (0 = barco hundido):" << endl;
+                            cout << "      0      1      2      3      4      5      6      7" << endl;
+                            for (int i = 0; i < 8; i++) {
+                            cout << i << "  ";
+                                for (int j = 0; j < 8; j++) {
+                                cout <<" | " <<juego_largo_J2[i][j] << " | ";
+                                }
+                                cout << endl;
+                            }
                         }
 
                         if (eleccion_del_tamanio_de_cuadricula != 1 && eleccion_del_tamanio_de_cuadricula != 2)
