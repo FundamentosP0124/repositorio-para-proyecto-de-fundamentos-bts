@@ -9,7 +9,8 @@ int main()
    char juego_largo_J2[8][8]={0};
    
    
-       int n1 = 1, n2 = 1;
+       int n1 = 1, n2 = 1, Puntaje1 = 1, Puntaje2 = 1, rondas = 1;
+       bool ganador = false;
        int fila_inicial, columna_inicial, fila_ataque, columna_ataque, opcion;
 
     cout << " DIFICULTAD " << endl;
@@ -19,6 +20,7 @@ int main()
 
     if (opcion == 1){
     //Declaracion de las matrices en 0   
+    
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {
             juego_rapido_J1[i][j] = '.';
@@ -114,7 +116,7 @@ int main()
         }
         cout << endl;
     }
-
+    do{
     cout << "------ATAQUES-----" << endl;
     cout << "JUGADOR 1. Ingrese las coordenadas que quiere atacar: " << endl;
     cout << "Fila: ";
@@ -125,6 +127,7 @@ int main()
     if (fila_ataque >= 0 && fila_ataque < 4 && columna_ataque >= 0 && columna_ataque < 4) {
         if (juego_rapido_J2[fila_ataque][columna_ataque] == 'x') {
             cout << "¡Felicidades, hundiste el barco de!" << endl;
+            Puntaje1 ++;
             juego_rapido_J2[fila_ataque][columna_ataque] = '0'; // Cambiar el valor para reflejar que fue adivinado
         } else {
             cout << "Esa posición ya fue atacada o es incorrecta." << endl;
@@ -142,6 +145,7 @@ int main()
     if (fila_ataque >= 0 && fila_ataque < 4 && columna_ataque >= 0 && columna_ataque < 4) {
         if (juego_rapido_J1[fila_ataque][columna_ataque] == 'x') {
             cout << "¡Felicidades, hundiste el barco de !" << endl;
+            Puntaje2++;
             juego_rapido_J1[fila_ataque][columna_ataque] = '0'; // Cambiar el valor para reflejar que fue adivinado
         } else {
             cout << "Esa posición ya fue atacada o es incorrecta." << endl;
@@ -149,7 +153,16 @@ int main()
     } else {
         cout << "Posición fuera de los límites de la matriz." << endl;
     }
+    
+    
+    rondas ++;
+    if (Puntaje1 == 4 ||Puntaje2 == 4){
+        ganador = true;
+    } else if (rondas == 16) {
+        ganador true;
+        }
 
+    }while(ganador=true); 
     cout << "MATRICES RESULTANTES"<< endl;
     
     cout << "J1.Matriz después del ataque:" << endl;
