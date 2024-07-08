@@ -10,6 +10,16 @@ struct Usuario
     int puntaje = 0;
 };
 
+void logo_funcion() {
+    cout << "   ___  ______   _______     _  _____ _   _____   __ " << endl;
+    cout << "  / _ |/ __/ /  / __/ _ |   / |/ / _ | | / / _ | / / " << endl;
+    cout << " / ___/ _// /__/ _// __ |  /    / __ | |/ / __ |/ /__" << endl;
+    cout << "/_/  /___/____/___/_/ |_| /_/|_/_/ |_|___/_/ |_/____/" << endl;
+    cout << endl;
+}
+
+
+
 int main()
 {
 
@@ -31,15 +41,6 @@ int main()
     char juego_largo_J2_sin_barcos[8][8] = {0};
 
     int n1 = 1, n2 = 1, rondas = 1,  fila_ataque=0, columna_ataque=0;
-
- 
-
-
-
-
-
-
-
 
 
 
@@ -73,25 +74,6 @@ int main()
             juego_largo_J2_sin_barcos[i][j] = '.';
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     for (int i = 0; i < 4; i++)
@@ -140,11 +122,7 @@ int main()
     do
     {
 
-        cout << "   ___  ______   _______     _  _____ _   _____   __ " << endl;
-        cout << "  / _ |/ __/ /  / __/ _ |   / |/ / _ | | / / _ | / / " << endl;
-        cout << " / ___/ _// /__/ _// __ |  /    / __ | |/ / __ |/ /__" << endl;
-        cout << "/_/  /___/____/___/_/ |_| /_/|_/_/ |_|___/_/ |_/____/" << endl
-             << endl;
+ logo_funcion();
 
         cout << "1. Jugar\n2. Ayuda\n3. Creditos\n4. Salir\n\n";
         cout << "Escriba el numero de su opcion aqui: ";
@@ -379,7 +357,9 @@ int main()
                                 }
                                 cout << endl;
                             }
-//Aqui podriamos poner la funcion del logo para cambiar de jugador
+
+        
+                           logo_funcion();
                             cout << "JUGADOR 2 - " << usuario2.nombre << ". El mapa original es:" << endl;
                             cout << "      0      1      2      3 " << endl;
                             for (int i = 0; i < 4; i++){
@@ -420,23 +400,14 @@ int main()
                                 }
                                 cout << endl;
                             }
-                        //Colocar Funcion logo para empezar a jugar
-
-
-
-
-
-
-
-
-
 
 
 
                             do{
+                                logo_funcion();
                             cout<<endl;
 
-                            cout << "------RONDA " << rondas++ << "-----" << endl; //Como le vamos a llamar a esta parte?
+                            cout << "------RONDA " << rondas++ << "-----" << endl; 
                             cout<<"Mapa del enemigo: \n\n";
                            
                            
@@ -456,9 +427,9 @@ int main()
 
                             if (fila_ataque >= 0 && fila_ataque < 4 && columna_ataque >= 0 && columna_ataque < 4) {
                                 if ((juego_rapido_J2[fila_ataque][columna_ataque] == 'x')&&(juego_rapido_J2[fila_ataque][columna_ataque]!='0')) {
-                                    cout << "¡Felicidades, hundiste el barco de " << usuario2. nombre << "!"<< endl; //nombre de jugador contrario
+                                    cout << "¡Felicidades, hundiste el barco de " << usuario2. nombre << "!"<< endl; 
                                     usuario1.puntaje++;
-                                    cout << "Tienes " << usuario1.puntaje<< " puntos." << endl; //Agregar funcion 
+                                    cout << "Tienes " << usuario1.puntaje<< " puntos." << endl; 
                                     juego_rapido_J2[fila_ataque][columna_ataque] = '0';
                                     juego_rapido_J2_sin_barcos[fila_ataque][columna_ataque] = '0'; 
                                     cout << endl;
@@ -492,8 +463,6 @@ int main()
                                     cout<<"Este es el mapa del enemigo despues de su ataque: "<<endl;
 
 
-
-
                             cout << "      0      1      2      3 " << endl;    
                             for (int i = 0; i < 4; i++){
                                 cout << i << "  ";
@@ -504,73 +473,97 @@ int main()
                             }
 
 
-
-
                                 }
                             } else {
                                 cout << "Posición fuera de los límites de la matriz." << endl;
                             }
 
 
-
-
-
-
-
-
-                        //Colocar funcion de logo para cambio de ataque de jugador
+                         logo_funcion();
                             cout << "JUGADOR 2 - " << usuario2.nombre << ". Ingrese las coordenadas que quiere atacar: " << endl;
+                            cout<<"Mapa del enemigo: \n\n";
+                           
+                           
+                            cout << "      0      1      2      3 " << endl;    
+                            for (int i = 0; i < 4; i++){
+                                cout << i << "  ";
+                                for (int j = 0; j < 4; j++){
+                                    cout << " | " << juego_rapido_J1_sin_barcos[i][j] << " | ";
+                                }
+                                cout << endl;
+                            }
+
                             cout << "Fila: ";
                             cin >> fila_ataque;
                             cout << "Columna: ";
                             cin >> columna_ataque;
 
                             if (fila_ataque >= 0 && fila_ataque < 4 && columna_ataque >= 0 && columna_ataque < 4) {
-                                if (juego_rapido_J1[fila_ataque][columna_ataque] == 'x') {
-                                    cout << "¡Felicidades, hundiste el barco de !" << endl; 
+                                if ((juego_rapido_J1[fila_ataque][columna_ataque] == 'x')&&(juego_rapido_J1[fila_ataque][columna_ataque]!='0')) {
+                                    cout << "¡Felicidades, hundiste un barco de "<<usuario1.nombre<<"!" << endl; 
                                     usuario2.puntaje++;
                                     cout << "Tienes " << usuario2.puntaje << " puntos." << endl; 
-                                    juego_rapido_J1[fila_ataque][columna_ataque] = '0'; 
+                                    juego_rapido_J1[fila_ataque][columna_ataque] = '0';
+                                    juego_rapido_J1_sin_barcos[fila_ataque][columna_ataque] = '0'; 
                                     cout << endl;
+
+                                    cout<<"Este es el mapa del enemigo despues de su ataque: "<<endl;
+
+
+                            cout << "      0      1      2      3 " << endl;    
+                            for (int i = 0; i < 4; i++){
+                                cout << i << "  ";
+                                for (int j = 0; j < 4; j++){
+                                    cout << " | " << juego_rapido_J1_sin_barcos[i][j] << " | ";
+                                }
+                                cout << endl;
+                            }
+                                    
                                 } else {
-                                    cout << "Suerte para la proxima, no hundiste ningun barco o ya atacaste esta posicion" << endl;
+                                    if (juego_rapido_J1[fila_ataque][columna_ataque]!='0')
+                                    {
+                                    juego_rapido_J1_sin_barcos[fila_ataque][columna_ataque] = '*';
+                                    cout << "Suerte para la proxima, no hundiste ningun barco o ya atacaste esta posicion." << endl;
+                                    cout<<endl;
+                                    }
+                                    
+
+                                    cout << "Suerte para la proxima, no hundiste ningun barco o ya atacaste esta posicion." << endl;
+                                    cout<<"Este es el mapa del enemigo despues de su ataque: "<<endl;
+
+
+
+
+                            cout << "      0      1      2      3 " << endl;    
+                            for (int i = 0; i < 4; i++){
+                                cout << i << "  ";
+                                for (int j = 0; j < 4; j++){
+                                    cout << " | " << juego_rapido_J1_sin_barcos[i][j] << " | ";
+                                }
+                                cout << endl;
+                            }
+
+
                                 }
                             } else {
                                 cout << "Posición fuera de los límites de la matriz." << endl;
                             }
+
+
+
                             
                             }while(usuario1.puntaje < 4 && usuario2.puntaje < 4 ); 
                             
                             if (usuario1.puntaje == 4){
-                                cout << "¡Felicidades " << usuario1.nombre <<  ", has ganado!"; //llamar funciones de nombre
+                                cout << "¡Felicidades " << usuario1.nombre <<  ", has ganado!"<<endl;
                             } else if (usuario2.puntaje == 4) {
-                                cout << "¡Felicidades " << usuario2.nombre <<  ", has ganado!"; //llamar funciones de nombre
+                                cout << "¡Felicidades " << usuario2.nombre <<  ", has ganado!"<<endl;
                             } 
 
-                            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                             
-                            cout << "RESULTADOS"<< endl; //Aqui podriamos agregar un documento
+                            cout << "RESULTADOS"<< endl; 
     
                             cout << "JUGADOR 1 - " << usuario1.nombre << ". Esta es su flota después del ataque (0 = barco hundido):" << endl;
                             cout << "      0      1      2      3" << endl;
@@ -593,9 +586,7 @@ int main()
                             }
 
 
-                        }
-    //Colocar Funcion logo para empezar a jugar
-                        else if ((eleccion_del_modo_de_juego == 2) && (eleccion_del_tamanio_de_cuadricula == 2))
+                        }  else if ((eleccion_del_modo_de_juego == 2) && (eleccion_del_tamanio_de_cuadricula == 2))
                         {
                             cout << "Escribe el nombre del equipo del jugador 1: ";
                             Usuario usuario1;
@@ -604,7 +595,7 @@ int main()
                             cout << "Escribe el nombre del equipo del jugador 2: ";
                             Usuario usuario2;
                             cin >> usuario2.nombre;
-                            // Acá van las matrices de 8x8
+                        
 
                             cout << "JUGADOR 1, " << usuario1.nombre << ". El mapa original es:" << endl;
                             
@@ -618,7 +609,7 @@ int main()
                             }
 
 
-                            // Ingreso de las posiciones del jugador 1
+                            
                             cout << "JUGADOR 1 - " << usuario1.nombre << ". Ingrese  las posiciones de sus cuatro barcos: " << endl;
                             for (int i = 0; i < 8; ++i)
                             {
@@ -637,7 +628,7 @@ int main()
                                 }
                             }
 
-                            // Mapa resultante jugador 1
+                            
                             cout << "JUGADOR 1 - " << usuario1.nombre << ". Este es su nuevo mapa (x = barco):" << endl;
                             cout << "      0      1      2      3      4      5      6      7" << endl;
                             for (int i = 0; i < 8; i++) {
@@ -648,7 +639,7 @@ int main()
                                 cout << endl;
                             }
 
-                            // Mapa original jugador 2
+                            logo_funcion();
                             cout << "\n\n";
                             cout << "JUGADOR 2 - " << usuario2.nombre << ". El mapa original es:" << endl;
                             cout << "      0      1      2      3      4      5      6      7" << endl;
@@ -660,7 +651,7 @@ int main()
                                 cout << endl;
                             }
 
-                            // Ingreso de las posiciones del jugador 2
+                            
                             cout << endl;
                             cout << "JUGADOR 2, " << usuario2.nombre << ". Ingrese  las posiciones de sus cuatro barcos: " << endl;
                             for (int i = 0; i < 8; ++i)
@@ -680,8 +671,8 @@ int main()
                                 }
                             }
 
-                            // Mapa resultante jugador 2
-                            cout << "JUGADOR 1 - " << usuario2.nombre << ". Este es su nuevo mapa (x = barco):" << endl;
+                            
+                            cout << "JUGADOR 2 - " << usuario2.nombre << ". Este es su nuevo mapa (x = barco):" << endl;
                             cout << "      0      1      2      3      4      5      6      7" << endl;
                             for (int i = 0; i < 8; i++) {
                             cout << i << "  ";
@@ -690,69 +681,164 @@ int main()
                                 }
                                 cout << endl;
                             }
+  
+
                             
-                            //Colocar Funcion logo para empezar a jugar
                             do{
+                            logo_funcion();
                             cout << "------RONDA " << rondas++ << "-----" << endl;
+
                             cout << "JUGADOR 1 - " << usuario1.nombre << ". Ingrese las coordenadas que quiere atacar: " << endl;
+                            cout<<"Mapa del enemigo: \n\n";
+                           
+                           
+                            cout << "      0      1      2      3      4      5      6      7" << endl;    
+                            for (int i = 0; i < 8; i++){
+                                cout << i << "  ";
+                                for (int j = 0; j < 8; j++){
+                                    cout << " | " << juego_largo_J2_sin_barcos[i][j] << " | ";
+                                }
+                                cout << endl;
+                            }
+
                             cout << "Fila: ";
                             cin >> fila_ataque;
                             cout << "Columna: ";
                             cin >> columna_ataque;
 
                             if (fila_ataque >= 0 && fila_ataque < 8 && columna_ataque >= 0 && columna_ataque < 8) {
-                                if (juego_largo_J2[fila_ataque][columna_ataque] == 'x') {
-                                    cout << "¡Felicidades, hundiste el barco de " << usuario2. nombre << "!"<< endl; //nombre de jugador contrario
+                                if ((juego_largo_J2[fila_ataque][columna_ataque] == 'x')&&(juego_largo_J2[fila_ataque][columna_ataque]!='0')) {
+                                    cout << "¡Felicidades, hundiste el barco de " << usuario2. nombre << "!"<< endl; 
                                     usuario1.puntaje++;
-                                    cout << "Tienes " << usuario1.puntaje<< " puntos." << endl; //Agregar funcion 
-                                    juego_largo_J2[fila_ataque][columna_ataque] = '0'; 
+                                    cout << "Tienes " << usuario1.puntaje<< " puntos." << endl;  
+                                    juego_largo_J2[fila_ataque][columna_ataque] = '0';
+                                    juego_largo_J2_sin_barcos[fila_ataque][columna_ataque] = '0'; 
                                     cout << endl;
 
+                                cout<<"Este es el mapa del enemigo despues de su ataque: "<<endl;
+
+
+                            cout << "      0      1      2      3      4      5      6      7" << endl;    
+                            for (int i = 0; i < 8; i++){
+                                cout << i << "  ";
+                                for (int j = 0; j < 8; j++){
+                                    cout << " | " << juego_largo_J2_sin_barcos[i][j] << " | ";
+                                }
+                                cout << endl;
+                            }
+                                    
                                 } else {
+                                    if (juego_largo_J2[fila_ataque][columna_ataque]!='0')
+                                    {
+                                    juego_largo_J2_sin_barcos[fila_ataque][columna_ataque] = '*';
                                     cout << "Suerte para la proxima, no hundiste ningun barco o ya atacaste esta posicion." << endl;
+                                    cout<<endl;
+                                    }
+                                    
+
+                                    cout << "Suerte para la proxima, no hundiste ningun barco o ya atacaste esta posicion." << endl;
+                                    cout<<"Este es el mapa del enemigo despues de su ataque: "<<endl;
+
+
+
+
+                            cout << "      0      1      2      3      4      5      6      7" << endl;    
+                            for (int i = 0; i < 8; i++){
+                                cout << i << "  ";
+                                for (int j = 0; j < 8; j++){
+                                    cout << " | " << juego_largo_J2_sin_barcos[i][j] << " | ";
+                                }
+                                cout << endl;
+                            }
+
+
                                 }
                             } else {
                                 cout << "Posición fuera de los límites de la matriz." << endl;
                             }
-                        //Colocar funcion de logo para cambio de ataque de jugador
+
+
+
+                            logo_funcion();
                             cout << "JUGADOR 2 - " << usuario2.nombre << ". Ingrese las coordenadas que quiere atacar: " << endl;
+                            cout<<"Mapa del enemigo: \n\n";
+                           
+                           
+                            cout << "      0      1      2      3      4      5      6      7" << endl;    
+                            for (int i = 0; i < 8; i++){
+                                cout << i << "  ";
+                                for (int j = 0; j < 8; j++){
+                                    cout << " | " << juego_largo_J1_sin_barcos[i][j] << " | ";
+                                }
+                                cout << endl;
+                            }
+
                             cout << "Fila: ";
                             cin >> fila_ataque;
                             cout << "Columna: ";
                             cin >> columna_ataque;
 
                             if (fila_ataque >= 0 && fila_ataque < 8 && columna_ataque >= 0 && columna_ataque < 8) {
-                                if (juego_largo_J1[fila_ataque][columna_ataque] == 'x') {
-                                    cout << "¡Felicidades, hundiste el barco de !" << endl; 
+                                if ((juego_largo_J1[fila_ataque][columna_ataque] == 'x')&&(juego_largo_J1[fila_ataque][columna_ataque]!='0')) {
+                                    cout << "¡Felicidades, hundiste el barco de " << usuario1. nombre << "!"<< endl; 
                                     usuario2.puntaje++;
-                                    cout << "Tienes " << usuario2.puntaje << " puntos." << endl; 
-                                    juego_largo_J1[fila_ataque][columna_ataque] = '0'; 
+                                    cout << "Tienes " << usuario2.puntaje<< " puntos." << endl; 
+                                    juego_largo_J1[fila_ataque][columna_ataque] = '0';
+                                    juego_largo_J1_sin_barcos[fila_ataque][columna_ataque] = '0'; 
                                     cout << endl;
+
+                                cout<<"Este es el mapa del enemigo despues de su ataque: "<<endl;
+
+
+                            cout << "      0      1      2      3      4      5      6      7" << endl;    
+                            for (int i = 0; i < 8; i++){
+                                cout << i << "  ";
+                                for (int j = 0; j < 8; j++){
+                                    cout << " | " << juego_largo_J1_sin_barcos[i][j] << " | ";
+                                }
+                                cout << endl;
+                            }
+                                    
                                 } else {
-                                    cout << "Suerte para la proxima, no hundiste ningun barco o ya atacaste esta posicion" << endl;
+                                    if (juego_largo_J1[fila_ataque][columna_ataque]!='0')
+                                    {
+                                    juego_largo_J1_sin_barcos[fila_ataque][columna_ataque] = '*';
+                                    cout << "Suerte para la proxima, no hundiste ningun barco o ya atacaste esta posicion." << endl;
+                                    cout<<endl;
+                                    }
+                                    
+
+                                    cout << "Suerte para la proxima, no hundiste ningun barco o ya atacaste esta posicion." << endl;
+                                    cout<<"Este es el mapa del enemigo despues de su ataque: "<<endl;
+
+
+
+
+                            cout << "      0      1      2      3      4      5      6      7" << endl;    
+                            for (int i = 0; i < 8; i++){
+                                cout << i << "  ";
+                                for (int j = 0; j < 8; j++){
+                                    cout << " | " << juego_largo_J1_sin_barcos[i][j] << " | ";
+                                }
+                                cout << endl;
+                            }
+
+
                                 }
                             } else {
                                 cout << "Posición fuera de los límites de la matriz." << endl;
                             }
-                            
-                            }while(usuario1.puntaje < 8 && usuario2.puntaje < 8 && rondas < 16);
+
+
+
+                            }while(usuario1.puntaje < 8 && usuario2.puntaje < 8);
                             if (usuario1.puntaje == 8){
-                                cout << "¡Felicidades " << usuario1.nombre <<  ", has ganado!"; 
+                                cout << "¡Felicidades " << usuario1.nombre <<  ", has ganado!"<<endl; 
                             } else if (usuario2.puntaje == 8) {
-                                cout << "¡Felicidades " << usuario2.nombre <<  ", has ganado!"; //llamar funciones de nombre
-                            } else if (usuario1.puntaje == 8 && usuario2.puntaje == 8) //llamar funciones de nombre
-                            {
-                                cout << "Hay un empate."<< endl; //Como podriamos decirle que para que vuelva a juegar
-                            } else if (rondas == 16){
-                                cout << "Han llegado al limite de rondas." << endl;
-                                if (usuario1.puntaje>usuario2.puntaje){
-                                cout << "¡Felicidades " << usuario1.nombre <<  ", has ganado!"; //llamar funciones de nombre
-                                } else if (usuario2.puntaje > usuario1.puntaje){
-                                cout << "¡Felicidades " << usuario2.nombre <<  ", has ganado!"; //llamar funciones de nombre
-                                }
+                                cout << "¡Felicidades " << usuario2.nombre <<  ", has ganado!"<<endl; 
                             }
                             
-                            cout << "RESULTADOS"<< endl; //Aqui podriamos agregar un documento
+                            cout << "RESULTADOS"<< endl; 
 
                             cout << "JUGADOR 1 - " << usuario1.nombre << ". Esta es su flota despues del ataque (0 = barco hundido):" << endl;
                             cout << "      0      1      2      3      4      5      6      7" << endl;
