@@ -8,9 +8,9 @@ struct Usuario {
     int puntaje = 0;
 };
 
-void creacion_archivo(); // Para crear archivo
-void lectura_archivo(); // Para leer el archivo
-void add(Usuario usuario1, Usuario usuario2); // Para agregar usuarios al archivo
+void creacion_archivo(); //Para crear archivo
+void lectura_archivo (); //Para leer archivo
+void add(Usuario usuario1, Usuario usuario2);
 
 int main() {
     Usuario usuario1, usuario2;
@@ -22,60 +22,77 @@ int main() {
     cout << "Opcion elegida: ";
     cin >> opcion;
 
+    if (opcion==1){
     cout << "Escribe un nombre para tu equipo: ";
     cin >> usuario1.nombre;
 
     cout << "Escribe un nombre para tu equipo: ";
     cin >> usuario2.nombre;
+    } else if (opcion==2) {
+        cout << "Escribe un nombre para tu equipo: ";
+    cin >> usuario1.nombre;
+    cout << "Escribe un nombre para tu equipo: ";
+    cin >> usuario2.nombre;
+    }
 
-    creacion_archivo(); // Asegurarse de que el archivo exista
-    add(usuario1, usuario2); // Agregar los usuarios al archivo
-    lectura_archivo(); // Leer el contenido del archivo
+    creacion_archivo();
+    add(usuario1, usuario2);
+    lectura_archivo();
+
 
     return 0;
 }
 
 void creacion_archivo() {
-    ofstream archivo;
-    archivo.open("prueba.txt", ios::app); // Abrir en modo append para no sobrescribir el contenido
+    //o = output "Producion, creacion o emision"
+    ofstream archivo; //creamos un tipo de variable y el nombre
+
+    archivo.open("prueba.txt", ios::app); //Creando y abriendo el archivo
+    //out = output, crea el archivo
+
     if (archivo.fail()) {
         cout << "No se pudo crear el archivo";
         exit(1);
     }
-    archivo.close(); // Solo asegurarse de que el archivo existe y luego cerrarlo
+
+    archivo.close(); //cerramos el archivo
 }
 
+
 void add(Usuario usuario1, Usuario usuario2){
-    static int partida = 1; // Static para mantener el conteo entre llamadas
+    int partida = 1;
     ofstream archivo;
-    archivo.open("prueba.txt", ios::app); // Abrir en modo append para agregar texto
+    archivo.open("prueba.txt", ios::app); //app = abrir el documento para AÑADIR texto
 
     if (archivo.fail()) {
-        cout << "No se pudo abrir el archivo";
+        cout << "No se pudo crear el archivo";
         exit(1);
     }
 
-    archivo << "\nPartida " << partida++ << endl;
+    archivo << "\t Partida " << partida++ << endl; //ciclo
     archivo << "Jugador 1 - " << usuario1.nombre << " con puntaje: " << usuario1.puntaje << endl;
     archivo << "Jugador 2 - " << usuario2.nombre << " con puntaje: " << usuario2.puntaje << endl;
 
-    archivo.close(); // Cerrar el archivo
+    archivo.close(); //cerrar archivo
+
 }
 
-void lectura_archivo() {
-    ifstream archivo; // Abrir el archivo para lectura
+void lectura_archivo (){
+    ifstream archivo; // i = input "Abrir, entrada de archivo"
     string texto;
 
-    archivo.open("prueba.txt", ios::in); // Abrir en modo lectura
+    archivo.open("prueba.txt", ios::in); //Abrimos el archivo en modo lectura
 
     if (archivo.fail()) {
-        cout << "No se pudo abrir el archivo";
+        cout << "No se pudo crear el archivo";
         exit(1);
     }
 
-    while (getline(archivo, texto)) { // Leer línea por línea
+    while (!archivo.eof()){ //eof = recorrer todo el archivo
+        getline(archivo, texto);
         cout << texto << endl;
     }
 
-    archivo.close(); // Cerrar el archivo
+    archivo.close(); //cerramos el archivo
+
 }
