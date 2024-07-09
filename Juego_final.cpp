@@ -32,7 +32,7 @@ int main()
 Usuario usuario1, usuario2;
 
 
-    int eleccion_del_usuario_en_el_menu = 0, eleccion_del_modo_de_juego = 0, eleccion_del_tamanio_de_cuadricula = 0, fila[8] = {}, columna[8] = {}, fila_inicial[8] = {}, columna_inicial[8] = {}, opcion = 0;
+    int eleccion_del_usuario_en_el_menu = 0, eleccion_del_tamanio_de_cuadricula = 0, fila[8] = {}, columna[8] = {}, fila_inicial[8] = {}, columna_inicial[8] = {}, opcion = 0;
 
     char juego_rapido_J1[4][4] = {0};
     char juego_rapido_J2[4][4] = {0};
@@ -48,8 +48,7 @@ Usuario usuario1, usuario2;
 
     int n1 = 1, n2 = 1, rondas = 1, fila_ataque = 0, columna_ataque = 0;
 
-    int puntos[3] = {1, 2, 3};
-    string objetos[3] = {"+", "@", "-"};
+
 
     for (int i = 0; i < 4; i++)
     {
@@ -116,7 +115,7 @@ Usuario usuario1, usuario2;
 
         logo_funcion();
 
-        cout << "1. Jugar\n2. Ayuda\n3. Creditos\n4. Salir\n\n";
+        cout << "1. Jugar\n2. Ayuda\n3. Creditos\n4. Salir\n5. Record de partidas\n\n";
         cout << "Escriba el numero de su opcion aqui: ";
         cin >> eleccion_del_usuario_en_el_menu;
         cout << endl;
@@ -124,8 +123,7 @@ Usuario usuario1, usuario2;
         switch (eleccion_del_usuario_en_el_menu)
         {
         case 1:
-            do
-            {
+
 
                 do
                 {
@@ -975,8 +973,6 @@ Usuario usuario1, usuario2;
                     }
                     while (eleccion_del_tamanio_de_cuadricula != 1 && eleccion_del_tamanio_de_cuadricula != 2);
 
-                } while (eleccion_del_modo_de_juego != 1 && eleccion_del_modo_de_juego != 2);
-
                 break;
 
              case 2:
@@ -1068,17 +1064,22 @@ Usuario usuario1, usuario2;
          case 4:
             cout << "Ha salido del juego";
             break;
+        
+        case 5:  
+        cout<<"RECORD DE PARTIDAS"<<endl;  
+        creacion_archivo();
+    add(usuario1, usuario2);
+    lectura_archivo();
+break; 
 
             default:
             cout << "Por favor escoger una opcion valida\n\n";
             break;
         }
 
-    } while ((eleccion_del_usuario_en_el_menu > 4) || (eleccion_del_usuario_en_el_menu < 1));
+    } while ((eleccion_del_usuario_en_el_menu > 5) || (eleccion_del_usuario_en_el_menu < 1));
 
-    creacion_archivo();
-    add(usuario1, usuario2);
-    lectura_archivo();
+
 
 
 
