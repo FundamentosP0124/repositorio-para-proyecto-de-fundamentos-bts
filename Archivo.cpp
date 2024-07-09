@@ -47,7 +47,7 @@ void creacion_archivo() {
     //o = output "Producion, creacion o emision"
     ofstream archivo; //creamos un tipo de variable y el nombre
 
-    archivo.open("prueba.txt", ios::app); //Creando y abriendo el archivo
+    archivo.open("record_partidas.txt", ios::app); //Creando y abriendo el archivo
     //out = output, crea el archivo
 
     if (archivo.fail()) {
@@ -61,7 +61,7 @@ void creacion_archivo() {
 
 void add(Usuario usuario1, Usuario usuario2){
     ofstream archivo;
-    archivo.open("prueba.txt", ios::app); //app = abrir el documento para AÑADIR texto
+    archivo.open("record_partidas.txt", ios::app); //app = abrir el documento para AÑADIR texto
 
     if (archivo.fail()) {
         cout << "No se pudo crear el archivo";
@@ -80,7 +80,7 @@ void lectura_archivo (){
     ifstream archivo; // i = input "Abrir, entrada de archivo"
     string texto;
 
-    archivo.open("prueba.txt", ios::in); //Abrimos el archivo en modo lectura
+    archivo.open("record_partidas.txt", ios::in); //Abrimos el archivo en modo lectura
 
     if (archivo.fail()) {
         cout << "No se pudo crear el archivo";
