@@ -725,7 +725,7 @@ int main()
                     cout << "    - La ubicacion de los barcos debe mantenerse en secreto para el oponente.\n\n";
                     cout << "COMO SE JUEGA:\n";
                     cout << "1. Turnos Alternos: Los jugadores se turnan para atacar. Un jugador hace un ataque por turno.\n";
-                    cout << "Al realizar un Ataque ";
+                    cout << "AL REALIZAR UN ATAQUE ";
                     cout << "el jugador indica una coordenada en el tablero del oponente (por ejemplo, fila |1| Columna |0|).\n";
                     cout << "El juego termina cuando un jugador hunde todos los barcos del oponente. Ese jugador es declarado ganador.\n\n";
                
@@ -765,7 +765,7 @@ int main()
                     cout << "    - La ubicacion de los barcos debe mantenerse en secreto para el oponente.\n\n";
                     cout << "COMO SE JUEGA:\n";
                     cout << "1. Turnos Alternos: Los jugadores se turnan para atacar. Un jugador hace un ataque por turno.\n";
-                    cout << "Al realizar un Ataque ";
+                    cout << "AL REALIZAR UN ATAQUE ";
                     cout << " el jugador indica una coordenada en el tablero del oponente (por ejemplo, |0| fila |1|columna).\n";
                     cout << "El juego termina cuando un jugador hunde todos los barcos del oponente. Ese jugador es declarado ganador.\n\n";
                 } else {
