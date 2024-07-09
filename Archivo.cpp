@@ -60,7 +60,6 @@ void creacion_archivo() {
 
 
 void add(Usuario usuario1, Usuario usuario2){
-    int partida = 1;
     ofstream archivo;
     archivo.open("prueba.txt", ios::app); //app = abrir el documento para AÑADIR texto
 
@@ -69,7 +68,7 @@ void add(Usuario usuario1, Usuario usuario2){
         exit(1);
     }
 
-    archivo << "\t Partida " << partida++ << endl; //ciclo
+    archivo << "\t Partida " << endl; //ciclo
     archivo << "Jugador 1 - " << usuario1.nombre << " con puntaje: " << usuario1.puntaje << endl;
     archivo << "Jugador 2 - " << usuario2.nombre << " con puntaje: " << usuario2.puntaje << endl;
 
